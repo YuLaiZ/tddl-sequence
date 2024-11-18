@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: tddl-sequence
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # application-dev.yaml 包含以下三个配置
+    # url:
+    # username:
+    # password:
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 200
+      connection-test-query: SELECT 1
+  # application-dev.yaml 文件需自建
+  profiles:
+    active: dev
+server:
+  port: 8080
+  servlet:
+    context-path: /tddl-sequence
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+sequence:
+  structure:
+    table: sequence
+    name: name
+    step: step
+    value: value
+    modified: gmt_modified
+logging:
+  level:
+    com: debug
